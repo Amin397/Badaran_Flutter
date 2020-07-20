@@ -36,6 +36,8 @@ dependencies:
   page_transition: "^1.1.5"
   titled_navigation_bar: ^4.1.0
   flutter_inner_drawer: ^0.5.6+1
+  smooth_page_indicator: ^0.1.5
+
 
 dev_dependencies:
   flutter_test:

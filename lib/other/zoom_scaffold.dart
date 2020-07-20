@@ -19,11 +19,11 @@ class _ZoomScaffoldState extends State<ZoomScaffold>
     with TickerProviderStateMixin {
 
   final List<TitledNavigationBarItem> items = [
-    TitledNavigationBarItem(title: Text('Home'), icon: Icons.home),
-    TitledNavigationBarItem(title: Text('Search'), icon: Icons.search),
-    TitledNavigationBarItem(title: Text('Bag'), icon: Icons.card_travel),
-    TitledNavigationBarItem(title: Text('Orders'), icon: Icons.shopping_cart),
-    TitledNavigationBarItem(title: Text('Profile'), icon: Icons.person_outline),
+    TitledNavigationBarItem(title: Text('کیف پول'), icon: Icons.account_balance_wallet),
+    TitledNavigationBarItem(title: Text('خریدبدون کارت' , style: TextStyle(fontSize: 12.0),), icon: Icons.credit_card),
+    TitledNavigationBarItem(title: Text('صفحه اصلی'), icon: Icons.home),
+    TitledNavigationBarItem(title: Text('تخفیف روز'), icon: Icons.local_offer),
+    TitledNavigationBarItem(title: Text('صورتحساب'), icon: Icons.assignment),
   ];
 
   Curve scaleDownCurve = new Interval(0.0, 0.3, curve: Curves.easeOut);
@@ -72,7 +72,7 @@ class _ZoomScaffoldState extends State<ZoomScaffold>
         body: widget.contentScreen.contentBuilder(context),
         bottomNavigationBar: TitledBottomNavigationBar(
           onTap: (index) => print("Selected Index: $index"),
-          reverse: false,
+          reverse: true,
           curve: Curves.easeInBack,
           items: items,
           activeColor: Colors.red,

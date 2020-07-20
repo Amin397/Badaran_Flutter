@@ -30,7 +30,9 @@ class HomePage extends StatelessWidget {
     ]);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "",
+      theme: ThemeData(
+        fontFamily: 'IRANSans'
+      ),
       routes: <String , WidgetBuilder>{
         SPLASH_SCREEN: (BuildContext context) => SplashScreen(),
         SIGN_IN: (BuildContext context) => SignInPage(),

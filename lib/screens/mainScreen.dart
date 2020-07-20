@@ -1,6 +1,7 @@
 import 'package:baderan/other/zoom_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'menu_page.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -10,6 +11,31 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   MenuController menuController;
+  PageController pageController;
+  final _currentPageNotifier = ValueNotifier<int>(0);
+  List<String> texts = [
+    'تفریح و سرگرمی',
+    'پوشاک',
+    'هایپرمارکت',
+    'رستوران',
+    'کافه',
+    'ورزشی',
+    'مذهبی',
+    'خرید',
+    'شهر بازی',
+  ];
+
+  List<Icon> icons = <Icon>[
+    Icon(Icons.videogame_asset),
+    Icon(Icons.highlight),
+    Icon(Icons.forward),
+    Icon(Icons.zoom_out_map),
+    Icon(Icons.zoom_out),
+    Icon(Icons.dashboard),
+    Icon(Icons.assignment),
+    Icon(Icons.account_balance),
+    Icon(Icons.list),
+  ];
 
   @override
   void initState() {
@@ -18,6 +44,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     menuController = new MenuController(
       vsync: this,
     )..addListener(() => setState(() {}));
+
+    pageController = PageController(initialPage: 1);
   }
 
   @override
@@ -66,8 +94,77 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   Widget _gridMainItems(context , size){
     return Expanded(
       child: Container(
-        
+        child: Stack(
+          children: <Widget>[
+            Expanded(
+              child: Container(
+                child: PageView.builder(
+                  physics: BouncingScrollPhysics(),
+                  controller: pageController,
+                  itemCount: 3,
+                  onPageChanged: (int indexP){
+                    _currentPageNotifier.value = indexP;
+                  },
+                  itemBuilder: (BuildContext context , int indexP){
+                    return _buildPageView(context , indexP , size);
+                  },
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                height: size.height * .05,
+                child: SmoothPageIndicator(
+                  controller: pageController,
+                  count: 3,
+                  effect: ExpandingDotsEffect(
+                    dotHeight: 10.0,
+                    dotWidth: 10.0,
+                    activeDotColor: Color(0xffff5a47)
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
       ),
+    );
+  }
+
+  Widget _buildPageView(context , indexP , size){
+    return Container(
+      child: Center(
+        child: GridView.builder(
+          physics: BouncingScrollPhysics(),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3 , mainAxisSpacing: 10),
+          itemBuilder: (_, indexG) => _buildItemsOfGridView(indexG , size),
+          itemCount: 9,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildItemsOfGridView(indexG , size){
+    return Column(
+      children: <Widget>[
+        Container(
+          margin: EdgeInsets.all(size.width * .01),
+          height: size.height * .12,
+          width: size.height * .12,
+          decoration: BoxDecoration(
+            boxShadow: [BoxShadow(
+                color: Colors.black38 , blurRadius: 7.0 , spreadRadius: 1.0
+            )],
+            shape: BoxShape.circle,
+            color: Colors.white,
+          ),
+          child: Center(
+            child: icons[indexG],
+          ),
+        ),
+        Text(texts[indexG])
+      ],
     );
   }
 
