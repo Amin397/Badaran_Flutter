@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
 
-import 'menu_dashboard_screen.dart';
+import 'mainScreen.dart';
 
 class SignInPage extends StatelessWidget {
   @override
@@ -39,6 +39,13 @@ class _SignInScreenState extends State<SignInScreen>
     _controller = AnimationController(
       vsync: this,
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+
+    _controller.dispose();
   }
 
   @override
@@ -260,7 +267,7 @@ class _SignInScreenState extends State<SignInScreen>
                                   Navigator.pushReplacement(
                                       context,
                                       PageTransition(
-                                          type: PageTransitionType.upToDown, child: MenuDashboardPage()));
+                                          type: PageTransitionType.upToDown, child: MyHomePage()));
                                 },
                                 splashColor: Colors.white,
                                 color: Colors.blue.shade400,
