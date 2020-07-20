@@ -1,4 +1,4 @@
-import 'package:baderan/screens/login_screen.dart';
+import 'package:baderan/screens/sign_in_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,49 +7,37 @@ import 'package:page_transition/page_transition.dart';
 
 import 'mainScreen.dart';
 
-class SignInPage extends StatelessWidget {
+class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        body: SignInScreen(),
+        body: LoginScreen(),
       ),
     );
   }
 }
 
-class SignInScreen extends StatefulWidget {
+class LoginScreen extends StatefulWidget {
   @override
-  _SignInScreenState createState() => _SignInScreenState();
+  _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _SignInScreenState extends State<SignInScreen>
-    with TickerProviderStateMixin {
-  AnimationController _controller;
+class _LoginScreenState extends State<LoginScreen> {
 
-  bool checked = false;
 
-  TextEditingController national_code = TextEditingController();
-  TextEditingController phone_Number = TextEditingController();
+  TextEditingController username = TextEditingController();
+  TextEditingController password = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      vsync: this,
-    );
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-
-    _controller.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+
     var size = MediaQuery.of(context).size;
 
     return Material(
@@ -131,11 +119,6 @@ class _SignInScreenState extends State<SignInScreen>
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text(
-                              'ثبت نام',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600, fontSize: 20.0),
-                            ),
                             Container(
                               margin: EdgeInsets.symmetric(
                                   vertical: (size.height * .7) * .05),
@@ -150,22 +133,18 @@ class _SignInScreenState extends State<SignInScreen>
                                         blurRadius: 6.0)
                                   ],
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(8.0))),
+                                  BorderRadius.all(Radius.circular(8.0))),
                               child: Center(
                                 child: TextField(
-                                  inputFormatters: <TextInputFormatter>[
-                                    WhitelistingTextInputFormatter.digitsOnly
-                                  ],
-                                  keyboardType: TextInputType.number,
                                   maxLines: 1,
-                                  controller: national_code,
+                                  controller: username,
                                   textAlign: TextAlign.center,
                                   decoration: InputDecoration(
                                       border: InputBorder.none,
-                                      hintText: 'کد ملی',
+                                      hintText: 'نام کاربری',
                                       hintStyle: TextStyle(
-                                        color: Colors.grey,
-                                        fontSize: 14.0
+                                          color: Colors.grey,
+                                          fontSize: 14.0
                                       )),
                                 ),
                               ),
@@ -184,100 +163,62 @@ class _SignInScreenState extends State<SignInScreen>
                                         blurRadius: 6.0)
                                   ],
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(8.0))),
+                                  BorderRadius.all(Radius.circular(8.0))),
                               child: Center(
                                 child: TextField(
-                                  maxLength: 11,
                                   maxLines: 1,
-                                  controller: phone_Number,
-                                  inputFormatters: <TextInputFormatter>[
-                                    WhitelistingTextInputFormatter.digitsOnly
-                                  ],
-                                  keyboardType: TextInputType.number,
+                                  controller: password,
                                   textAlign: TextAlign.center,
                                   decoration: InputDecoration(
                                       border: InputBorder.none,
-                                      hintText: 'شماره موبایل',
+                                      hintText: 'رمز عبور',
                                       hintStyle: TextStyle(
-                                        fontSize: 14.0,
+                                          fontSize: 14.0,
                                           color: Colors.grey, height: 1)),
                                 ),
                               ),
                             ),
-                            Divider(
-                              height: 5,
-                              color: Colors.black26,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Row(
-                                  children: <Widget>[
-                                    Container(
-                                      width: 50.0,
-                                      height: 50.0,
-                                      child: InkWell(
-                                        onTap: (){
-                                          setState(() {
-                                            if(!checked){
-                                              _controller
-                                                ..duration = Duration(seconds: 3)
-                                                ..forward();
-                                            }else{
-                                              _controller
-                                                ..duration = Duration(seconds: 3)
-                                                ..reverse();
-                                            }
-                                            checked = !checked;
-                                            print(checked);
-                                          });
-                                        },
-                                        child: Lottie.asset('assets/anim/checked.json',
-                                          controller: _controller,
-                                          fit: BoxFit.cover,
-                                          repeat: false,
-                                        ),
-                                      ),
-                                    ),
-                                    Text('قوانین مورد تایید میباشد !' , style: TextStyle(
-                                      color: Colors.black ,
-                                      fontSize: 14.0
-                                    ),),
-                                  ],
-                                ),
-                                FlatButton(
-                                  onPressed: (){
+                            Divider(),
+                            FlatButton(
+                              onPressed: (){
 
-                                  },
-                                  child: Center(
-                                    child: Text('قوانین و مقررات' , style: TextStyle(
-                                      color: Colors.lightBlue,
-                                      fontSize: 10.0
-                                    ),),
-                                  ),
-                                )
-                              ],
-                            ),
-                            Divider(
-                              height: 5,
-                              color: Colors.black26,
+                              },
+                              child: Text('بازیابی رمز عبور' , style: TextStyle(
+                                color: Colors.blueAccent,
+                                fontSize: 12.0
+                              ),),
                             ),
                             Padding(
-                              padding: EdgeInsets.only(top: (size.height * .7) * .1),
+                              padding: EdgeInsets.only(top: (size.height * .7) * .1 , left: size.width * .1 , right:  size.width * .1 ),
                               child: RaisedButton(
                                 onPressed: (){
                                   Navigator.pushReplacement(
                                       context,
                                       PageTransition(
-                                          type: PageTransitionType.upToDown, child: LoginPage()));
+                                          type: PageTransitionType.upToDown, child: MyHomePage()));
                                 },
                                 splashColor: Colors.white,
                                 color: Colors.blue.shade400,
                                 child: Center(
-                                  child: Text('تکمیل ثبت نام' , style: TextStyle(
-                                    color: Colors.white , fontWeight: FontWeight.w600
+                                  child: Text('ورود' , style: TextStyle(
+                                      color: Colors.white , fontWeight: FontWeight.w600
                                   ),),
                                 ),
+                              ),
+                            ),
+                            Divider(),
+                            Center(
+                              child: FlatButton(
+                                onPressed: (){
+                                  Navigator.pushReplacement(
+                                      context,
+                                      PageTransition(
+                                          type: PageTransitionType.upToDown, child: SignInPage()));
+                                },
+                                child: Text('عضویت در باشگاه' , style: TextStyle(
+                                  color: Color(0xff00a5b8),
+                                  fontWeight: FontWeight.bold
+                                ),),
                               ),
                             )
                           ],

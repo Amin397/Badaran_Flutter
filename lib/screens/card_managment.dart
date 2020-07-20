@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
 
 class CardManagement extends StatefulWidget {
   @override
@@ -8,8 +7,8 @@ class CardManagement extends StatefulWidget {
 
 class _CardManagementState extends State<CardManagement> {
   List<Cards> cards = [
-    Cards('assets/images/melat_bank_log.png', 'بانک ملت',
-        '6273 8111 2054 0734', false),
+    Cards('assets/images/melat_bank_log.png', 'بانک ملت', '6273 8111 2054 0734',
+        false),
     Cards('assets/images/melli_bank_logo.png', 'بانک ملی',
         '6273 8111 2054 0734', true),
   ];
@@ -22,12 +21,13 @@ class _CardManagementState extends State<CardManagement> {
       textDirection: TextDirection.rtl,
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
-          onPressed: (){
-
-          },
+          onPressed: () {},
           backgroundColor: Color(0xff00a5b8),
           child: Center(
-            child: Icon(Icons.add , color: Colors.white,),
+            child: Icon(
+              Icons.add,
+              color: Colors.white,
+            ),
           ),
         ),
         appBar: AppBar(
@@ -94,13 +94,15 @@ class _CardManagementState extends State<CardManagement> {
                   width: size.width * .1,
                   height: size.height,
                   decoration: BoxDecoration(
-                      color: (cards[index].taaid_shode) ? Colors.green : Colors.redAccent,
+                      color: (cards[index].taaid_shode)
+                          ? Colors.green
+                          : Colors.redAccent,
                       borderRadius: BorderRadius.only(
                           topRight: Radius.circular(8.0),
                           bottomRight: Radius.circular(8.0))),
                   child: Center(
                     child: RotatedBox(
-                      quarterTurns: 1,
+                      quarterTurns: 3,
                       child: Text(
                         (cards[index].taaid_shode) ? 'تایید شده' : 'تایید نشده',
                         style: TextStyle(
@@ -112,16 +114,16 @@ class _CardManagementState extends State<CardManagement> {
                     ),
                   ),
                 ),
-                SizedBox(width: size.width * .02,),
+                SizedBox(
+                  width: size.width * .02,
+                ),
                 Container(
                   height: size.height,
                   width: size.width * .2,
                   decoration: BoxDecoration(
                       image: DecorationImage(
                           fit: BoxFit.contain,
-                          image: Image.asset(cards[index].image_path).image
-                      )
-                  ),
+                          image: Image.asset(cards[index].image_path).image)),
                 ),
               ],
             ),
@@ -129,9 +131,10 @@ class _CardManagementState extends State<CardManagement> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text(cards[index].bank_name , style: TextStyle(
-                  fontWeight: FontWeight.w600
-                ),),
+                Text(
+                  cards[index].bank_name,
+                  style: TextStyle(fontWeight: FontWeight.w600),
+                ),
                 Text(cards[index].card_number),
               ],
             ),
@@ -147,26 +150,41 @@ class _CardManagementState extends State<CardManagement> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   IconButton(
-                    icon: Icon(Icons.clear , size: 20.0, color: Colors.black54,),
-                    onPressed: (){
-                      cards.remove(index);
+                    icon: Icon(
+                      Icons.clear,
+                      size: 20.0,
+                      color: Colors.black54,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        cards.removeAt(index);
+                      });
                     },
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: (size.width * .15) * .1 , bottom: (size.height * .15) * .05),
+                    margin: EdgeInsets.only(
+                        left: (size.width * .15) * .1,
+                        bottom: (size.height * .15) * .05),
                     width: size.width * .15,
                     height: (size.height * .15) * .2,
                     decoration: BoxDecoration(
-                      color: Color(0xff00a5b8),
-                      borderRadius: BorderRadius.all(Radius.circular(5.0))
-                    ),
+                        color: Color(0xff00a5b8),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black12,
+                              spreadRadius: 1.0,
+                              blurRadius: 5.0)
+                        ],
+                        borderRadius: BorderRadius.all(Radius.circular(5.0))),
                     child: Center(
-                      child: Text('اعتبار سنجی' , style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 8.0,
-                        height: 1,
-
-                      ),),
+                      child: Text(
+                        'اعتبار سنجی',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 8.0,
+                          height: 1,
+                        ),
+                      ),
                     ),
                   )
                 ],

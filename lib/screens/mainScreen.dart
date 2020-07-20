@@ -26,15 +26,15 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   ];
 
   List<Icon> icons = <Icon>[
-    Icon(Icons.videogame_asset , color: Color(0xff00a5b8),),
-    Icon(Icons.highlight,color: Color(0xff00a5b8),),
-    Icon(Icons.forward,color: Color(0xff00a5b8),),
-    Icon(Icons.zoom_out_map,color: Color(0xff00a5b8),),
-    Icon(Icons.zoom_out,color: Color(0xff00a5b8),),
-    Icon(Icons.dashboard,color: Color(0xff00a5b8),),
-    Icon(Icons.assignment,color: Color(0xff00a5b8),),
-    Icon(Icons.account_balance,color: Color(0xff00a5b8),),
-    Icon(Icons.list,color: Color(0xff00a5b8),),
+    Icon(Icons.videogame_asset , color: Color(0xff00a5b8),size: 35.0,),
+    Icon(Icons.highlight,color: Color(0xff00a5b8),size: 35.0,),
+    Icon(Icons.forward,color: Color(0xff00a5b8),size: 35.0,),
+    Icon(Icons.zoom_out_map,color: Color(0xff00a5b8),size: 35.0,),
+    Icon(Icons.zoom_out,color: Color(0xff00a5b8),size: 35.0,),
+    Icon(Icons.dashboard,color: Color(0xff00a5b8),size: 35.0,),
+    Icon(Icons.assignment,color: Color(0xff00a5b8),size: 35.0,),
+    Icon(Icons.account_balance,color: Color(0xff00a5b8),size: 35.0,),
+    Icon(Icons.list,color: Color(0xff00a5b8),size: 35.0,),
   ];
 
   @override
