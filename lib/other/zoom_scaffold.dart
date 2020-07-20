@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:titled_navigation_bar/titled_navigation_bar.dart';
 
 class ZoomScaffold extends StatefulWidget {
   final Widget menuScreen;
@@ -16,18 +17,41 @@ class ZoomScaffold extends StatefulWidget {
 
 class _ZoomScaffoldState extends State<ZoomScaffold>
     with TickerProviderStateMixin {
+
+  final List<TitledNavigationBarItem> items = [
+    TitledNavigationBarItem(title: Text('Home'), icon: Icons.home),
+    TitledNavigationBarItem(title: Text('Search'), icon: Icons.search),
+    TitledNavigationBarItem(title: Text('Bag'), icon: Icons.card_travel),
+    TitledNavigationBarItem(title: Text('Orders'), icon: Icons.shopping_cart),
+    TitledNavigationBarItem(title: Text('Profile'), icon: Icons.person_outline),
+  ];
+
   Curve scaleDownCurve = new Interval(0.0, 0.3, curve: Curves.easeOut);
   Curve scaleUpCurve = new Interval(0.0, 1.0, curve: Curves.easeOut);
   Curve slideOutCurve = new Interval(0.0, 1.0, curve: Curves.easeOut);
   Curve slideInCurve = new Interval(0.0, 1.0, curve: Curves.easeOut);
 
-  createContentDisplay() {
+  createContentDisplay(context) {
+
+    var size = MediaQuery.of(context).size;
+
     return zoomAndSlideContent(new Container(
       child: new Scaffold(
         backgroundColor: Colors.transparent,
         appBar: new AppBar(
             backgroundColor: Colors.grey[200],
             elevation: 0.0,
+            centerTitle: true,
+            title: Container(
+              height: 50.0,
+              width: 50.0,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: Image.asset('assets/images/logo.png').image
+                )
+              ),
+            ),
             leading: new IconButton(
                 icon: Icon(
                   Icons.menu,
@@ -40,31 +64,19 @@ class _ZoomScaffoldState extends State<ZoomScaffold>
               IconButton(
                 onPressed: () {},
                 icon: Icon(
-                  Icons.access_time,
-                  color: Colors.grey,
+                  Icons.person,
+                  color: Colors.black,
                 ),
               )
             ]),
         body: widget.contentScreen.contentBuilder(context),
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          currentIndex: 0,
-          items: [
-            BottomNavigationBarItem(
-                title: Text(''),
-                icon: Icon(
-                  Icons.home,
-                  color: Colors.grey,
-                )),
-            BottomNavigationBarItem(
-                title: Text(''),
-                icon: Icon(Icons.shopping_basket, color: Colors.grey)),
-            BottomNavigationBarItem(
-                title: Text(''),
-                icon: Icon(Icons.shopping_cart, color: Colors.grey)),
-            BottomNavigationBarItem(
-                title: Text(''), icon: Icon(Icons.person, color: Colors.grey)),
-          ],
+        bottomNavigationBar: TitledBottomNavigationBar(
+          onTap: (index) => print("Selected Index: $index"),
+          reverse: false,
+          curve: Curves.easeInBack,
+          items: items,
+          activeColor: Colors.red,
+          inactiveColor: Colors.blueGrey,
         ),
       ),
     ));
@@ -132,7 +144,7 @@ class _ZoomScaffoldState extends State<ZoomScaffold>
             body: widget.menuScreen,
           ),
         ),
-        createContentDisplay()
+        createContentDisplay(context)
       ],
     );
   }
