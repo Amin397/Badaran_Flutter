@@ -24,7 +24,7 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   AnimationController _controller;
 
   bool checked = false;
@@ -35,7 +35,6 @@ class _SignInScreenState extends State<SignInScreen>
   @override
   void initState() {
     super.initState();
-
     _controller = AnimationController(
       vsync: this,
     );
@@ -165,6 +164,7 @@ class _SignInScreenState extends State<SignInScreen>
                                       hintText: 'کد ملی',
                                       hintStyle: TextStyle(
                                         color: Colors.grey,
+                                        fontSize: 14.0
                                       )),
                                 ),
                               ),
@@ -198,6 +198,7 @@ class _SignInScreenState extends State<SignInScreen>
                                       border: InputBorder.none,
                                       hintText: 'شماره موبایل',
                                       hintStyle: TextStyle(
+                                        fontSize: 14.0,
                                           color: Colors.grey, height: 1)),
                                 ),
                               ),
@@ -239,7 +240,7 @@ class _SignInScreenState extends State<SignInScreen>
                                     ),
                                     Text('قوانین مورد تایید میباشد !' , style: TextStyle(
                                       color: Colors.black ,
-                                      fontSize: 15.0
+                                      fontSize: 14.0
                                     ),),
                                   ],
                                 ),
@@ -250,7 +251,7 @@ class _SignInScreenState extends State<SignInScreen>
                                   child: Center(
                                     child: Text('قوانین و مقررات' , style: TextStyle(
                                       color: Colors.lightBlue,
-
+                                      fontSize: 10.0
                                     ),),
                                   ),
                                 )

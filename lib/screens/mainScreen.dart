@@ -26,15 +26,15 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   ];
 
   List<Icon> icons = <Icon>[
-    Icon(Icons.videogame_asset),
-    Icon(Icons.highlight),
-    Icon(Icons.forward),
-    Icon(Icons.zoom_out_map),
-    Icon(Icons.zoom_out),
-    Icon(Icons.dashboard),
-    Icon(Icons.assignment),
-    Icon(Icons.account_balance),
-    Icon(Icons.list),
+    Icon(Icons.videogame_asset , color: Color(0xff00a5b8),),
+    Icon(Icons.highlight,color: Color(0xff00a5b8),),
+    Icon(Icons.forward,color: Color(0xff00a5b8),),
+    Icon(Icons.zoom_out_map,color: Color(0xff00a5b8),),
+    Icon(Icons.zoom_out,color: Color(0xff00a5b8),),
+    Icon(Icons.dashboard,color: Color(0xff00a5b8),),
+    Icon(Icons.assignment,color: Color(0xff00a5b8),),
+    Icon(Icons.account_balance,color: Color(0xff00a5b8),),
+    Icon(Icons.list,color: Color(0xff00a5b8),),
   ];
 
   @override
@@ -121,6 +121,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                   effect: ExpandingDotsEffect(
                     dotHeight: 10.0,
                     dotWidth: 10.0,
+                    dotColor: Color(0xff00a5b8),
                     activeDotColor: Color(0xffff5a47)
                   ),
                 ),
@@ -154,7 +155,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           width: size.height * .12,
           decoration: BoxDecoration(
             boxShadow: [BoxShadow(
-                color: Colors.black38 , blurRadius: 7.0 , spreadRadius: 1.0
+                color: Colors.black12 , blurRadius: 5.0 , spreadRadius: .8
             )],
             shape: BoxShape.circle,
             color: Colors.white,

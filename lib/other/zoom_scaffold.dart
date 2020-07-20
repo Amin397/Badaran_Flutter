@@ -75,8 +75,10 @@ class _ZoomScaffoldState extends State<ZoomScaffold>
           reverse: true,
           curve: Curves.easeInBack,
           items: items,
-          activeColor: Colors.red,
-          inactiveColor: Colors.blueGrey,
+          inactiveStripColor: Color(0xff00a5b8),
+          indicatorColor: Color(0xffff5a47),
+          activeColor: Color(0xffff5a47),
+          inactiveColor: Color(0xff00a5b8),
         ),
       ),
     ));
