@@ -51,22 +51,27 @@ class _CardManagementState extends State<CardManagement> {
               ),
               Expanded(
                 flex: 1,
-                child: Container(
-                  padding: EdgeInsets.only(top: size.height * .02),
-                  height: size.height * .6,
-                  child: ListView.builder(
-                    itemCount: cards.length,
-                    physics: BouncingScrollPhysics(),
-                    itemBuilder: (BuildContext context, int index) {
-                      return Padding(
-                        padding: EdgeInsets.only(
-                            left: size.width * .04,
-                            right: size.width * .04,
-                            bottom: size.height * .03),
-                        child: _buildCardsItems(context, index),
-                      );
-                    },
-                  ),
+                child: Flex(
+                  direction: Axis.vertical,
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.only(top: size.height * .02),
+                      height: size.height * .6,
+                      child: ListView.builder(
+                        itemCount: cards.length,
+                        physics: BouncingScrollPhysics(),
+                        itemBuilder: (BuildContext context, int index) {
+                          return Padding(
+                            padding: EdgeInsets.only(
+                                left: size.width * .04,
+                                right: size.width * .04,
+                                bottom: size.height * .03),
+                            child: _buildCardsItems(context, index),
+                          );
+                        },
+                      ),
+                    )
+                  ],
                 ),
               )
             ],

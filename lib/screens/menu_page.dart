@@ -7,7 +7,6 @@ import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
 class MenuScreen extends StatelessWidget {
-
   final List<MenuItem> options = [
     MenuItem(Icons.person, 'پروفایل'),
     MenuItem(Icons.credit_card, 'مدیریت کارت'),
@@ -16,7 +15,6 @@ class MenuScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     var size = MediaQuery.of(context).size;
 
     return GestureDetector(
@@ -29,18 +27,14 @@ class MenuScreen extends StatelessWidget {
       child: Directionality(
         textDirection: TextDirection.rtl,
         child: Container(
-          padding: EdgeInsets.only(
-              top: 62,
-              bottom: 8,
-              left: size.width / 2.9),
-          color:Color(0xff00a5b8),
+          padding: EdgeInsets.only(top: 62, bottom: 8, left: size.width / 2.9),
+          color: Color(0xff00a5b8),
           child: Column(
             children: <Widget>[
               _buildMenuProfilePic(size),
               Spacer(),
               GestureDetector(
-                onTap: (){
-                },
+                onTap: () {},
                 child: ListTile(
                   leading: Icon(
                     Icons.person,
@@ -57,13 +51,14 @@ class MenuScreen extends StatelessWidget {
                 ),
               ),
               GestureDetector(
-                onTap: (){
+                onTap: () {
                   Provider.of<MenuController>(context, listen: true).toggle();
-                  Timer(Duration(seconds: 1), (){
+                  Timer(Duration(seconds: 1), () {
                     Navigator.push(
                         context,
                         PageTransition(
-                            type: PageTransitionType.upToDown, child: CardManagement()));
+                            type: PageTransitionType.upToDown,
+                            child: CardManagement()));
                   });
                 },
                 child: ListTile(
@@ -123,60 +118,70 @@ class MenuScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildMenuProfilePic(size){
+  Widget _buildMenuProfilePic(size) {
     return Container(
       height: size.height * .12,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(8.0))
-      ),
+      decoration:
+          BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8.0))),
       child: Row(
         children: <Widget>[
           Container(
             margin: EdgeInsets.all(5.0),
             width: size.width * .25,
             decoration: BoxDecoration(
-                boxShadow: [BoxShadow(
-                    color: Colors.black26 , spreadRadius: 1.2 , blurRadius: 5.0
-                )],
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.black26, spreadRadius: 1.2, blurRadius: 5.0)
+                ],
                 shape: BoxShape.circle,
-                border: Border.all(color: Colors.white , width: 2.0),
+                border: Border.all(color: Colors.white, width: 2.0),
                 image: DecorationImage(
                     fit: BoxFit.contain,
-                    image: Image.asset('assets/images/avatar.png').image
-                )
-            ),
+                    image: Image.asset('assets/images/avatar.png').image)),
           ),
           Expanded(
-            child: Container(
-              width: size.width * .75,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
+              flex: 1,
+              child: Flex(
+                direction: Axis.vertical,
                 children: <Widget>[
-                  Text('یونس نادری' , style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18.0,
-                      fontFamily: 'IRANSans'
-                  ),),
-                  Row(
-                    children: <Widget>[
-                      Text('کد عضویت: ' , style: TextStyle(
-                          fontFamily: 'IRANSans',
-                          fontSize: 10.0,
-                          color: Colors.white60
-                      ),),
-                      Text('ba45124845' , style: TextStyle(
-                        fontSize: 16.0,
-                        color: Colors.white,
-                        fontFamily: 'IRANSans',
-                      ),),
-                    ],
-                  )
+                  Container(
+                    width: size.width * .75,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          'یونس نادری',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18.0,
+                              fontFamily: 'IRANSans'),
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Text(
+                              'کد عضویت: ',
+                              style: TextStyle(
+                                  fontFamily: 'IRANSans',
+                                  fontSize: 10.0,
+                                  color: Colors.white60),
+                            ),
+                            Text(
+                              'ba45124845',
+                              style: TextStyle(
+                                fontSize: 16.0,
+                                color: Colors.white,
+                                fontFamily: 'IRANSans',
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
                 ],
-              ),
-            ),
-          )
+              ))
         ],
       ),
     );

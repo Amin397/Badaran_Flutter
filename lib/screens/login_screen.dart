@@ -1,10 +1,7 @@
 import 'package:baderan/screens/sign_in_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
-
 import 'mainScreen.dart';
 
 class LoginPage extends StatelessWidget {
@@ -25,7 +22,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
 
   TextEditingController username = TextEditingController();
   TextEditingController password = TextEditingController();
