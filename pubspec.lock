@@ -143,7 +143,7 @@ packages:
       name: overlay_support
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.4"
+    version: "1.0.5"
   page_transition:
     dependency: "direct main"
     description:
