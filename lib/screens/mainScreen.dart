@@ -89,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   @override
   void dispose() {
-    menuController.dispose();
+//    menuController.dispose();
     super.dispose();
   }
 

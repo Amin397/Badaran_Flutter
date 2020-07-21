@@ -14,6 +14,11 @@ class _CardManagementState extends State<CardManagement> {
   ];
 
   @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
 
@@ -161,9 +166,7 @@ class _CardManagementState extends State<CardManagement> {
                       color: Colors.black54,
                     ),
                     onPressed: () {
-                      setState(() {
-                        cards.removeAt(index);
-                      });
+                      _showMyDialog(index);
                     },
                   ),
                   Container(
@@ -198,6 +201,36 @@ class _CardManagementState extends State<CardManagement> {
           ],
         ),
       ),
+    );
+  }
+
+  Future<void> _showMyDialog(index) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Center(
+            child: Icon(Icons.warning , color: Colors.amber.shade800, size: 60.0,),
+          ),
+          content: SingleChildScrollView(
+            child: Center(
+              child: Text('آیا از حذف کارت مطمعنید ؟'),
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('بله'),
+              onPressed: () {
+                setState(() {
+                  cards.removeAt(index);
+                });
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
