@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import 'item_detailes_click.dart';
 
 class ItemsDetails extends StatefulWidget {
   String categorieText;
@@ -73,8 +76,7 @@ class _ItemsDetailsState extends State<ItemsDetails>
   }
 
   Widget _gridDetailsItems(context, size) {
-    return Expanded(
-      child: Container(
+    return Container(
         child: Stack(
           children: <Widget>[
             Container(
@@ -107,8 +109,7 @@ class _ItemsDetailsState extends State<ItemsDetails>
             )
           ],
         ),
-      ),
-    );
+      );
   }
 
   Widget _buildPageView(context, indexP, size) {
@@ -129,7 +130,13 @@ class _ItemsDetailsState extends State<ItemsDetails>
     return Column(
       children: <Widget>[
         InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.push(
+                context,
+                PageTransition(
+                    type: PageTransitionType.leftToRight,
+                    child: ItemDetailsClick(switchText()[indexG] , widget.categorieText)));
+          },
           splashColor: Colors.red,
           child: Container(
             margin: EdgeInsets.all(size.width * .01),
@@ -209,6 +216,7 @@ class _ItemsDetailsState extends State<ItemsDetails>
             'کاج',
             'شاندیز',
             'ساویز',
+            'رومانو',
           ];
         }
       case 'ورزشی':
