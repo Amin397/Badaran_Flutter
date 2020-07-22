@@ -60,12 +60,6 @@ class _QrCodeScannerState extends State<QrCodeScanner>
                         print(qrScanner.toString());
                       });
                     },
-//                    onTap: (){
-////                      Navigator.push(
-////                          context,
-////                          PageTransition(
-////                              type: PageTransitionType.upToDown, child: QrScanner()));
-//                    },
                     child: Material(
                       elevation: 5.0,
                       child: Container(
@@ -105,7 +99,7 @@ class _QrCodeScannerState extends State<QrCodeScanner>
   }
 
   _launchURL() async {
-    const url = 'https://flutter.io';
+    String url = qrScanner;
     if (await canLaunch(url)) {
       await launch(url);
     } else {
