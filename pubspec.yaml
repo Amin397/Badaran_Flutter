@@ -37,6 +37,7 @@ dependencies:
   titled_navigation_bar: ^4.1.0
   flutter_inner_drawer: ^0.5.6+1
   smooth_page_indicator: ^0.1.5
+  auto_size_text: ^2.1.0
 
 
 dev_dependencies:

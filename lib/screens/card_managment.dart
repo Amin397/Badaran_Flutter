@@ -228,6 +228,12 @@ class _CardManagementState extends State<CardManagement> {
                 Navigator.of(context).pop();
               },
             ),
+            FlatButton(
+              child: Text('خیر'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            )
           ],
         );
       },

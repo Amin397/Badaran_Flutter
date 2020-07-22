@@ -170,7 +170,7 @@ class MenuScreen extends StatelessWidget {
                             Text(
                               'ba45124845',
                               style: TextStyle(
-                                fontSize: 16.0,
+                                fontSize: 14.0,
                                 color: Colors.white,
                                 fontFamily: 'IRANSans',
                               ),

@@ -71,7 +71,9 @@ class _ItemDetailsClickState extends State<ItemDetailsClick> {
                 })
           ],
           backgroundColor: Color(0xffff5a47),
-          title: Text('${widget.parentName} / ${widget.switchName}'),
+          title: Text('${widget.parentName} / ${widget.switchName}' , style: TextStyle(
+            fontSize: 12.0
+          ),),
         ),
         body: Container(
           height: size.height,

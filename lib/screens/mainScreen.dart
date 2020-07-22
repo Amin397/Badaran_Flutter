@@ -1,5 +1,6 @@
 import 'package:baderan/other/zoom_scaffold.dart';
 import 'package:baderan/screens/item_details_Screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
@@ -177,9 +178,10 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     return Container(
       child: Center(
         child: GridView.builder(
+          padding: EdgeInsets.symmetric(vertical: size.height * .02),
           physics: BouncingScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3, mainAxisSpacing: 10),
+              crossAxisCount: 3, mainAxisSpacing: size.height * .03),
           itemBuilder: (_, indexG) => _buildItemsOfGridView(indexG, size),
           itemCount: 9,
         ),
@@ -200,8 +202,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         children: <Widget>[
           Container(
             margin: EdgeInsets.all(size.width * .01),
-            height: size.height * .12,
-            width: size.height * .12,
+            height: size.height * .1,
+            width: size.height * .1,
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
@@ -214,7 +216,9 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
               child: icons[indexG],
             ),
           ),
-          Text(texts[indexG])
+          Text(texts[indexG] , style: TextStyle(
+            fontSize: 12.0
+          ),)
         ],
       ),
     );
