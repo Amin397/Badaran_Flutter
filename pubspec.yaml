@@ -38,11 +38,17 @@ dependencies:
   flutter_inner_drawer: ^0.5.6+1
   smooth_page_indicator: ^0.1.5
   auto_size_text: ^2.1.0
+  pedantic: ^1.9.0
+  barcode_scan: ^2.0.1
+  url_launcher: ^5.4.2
+  qr_code_scanner:
+
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

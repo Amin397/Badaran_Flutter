@@ -11,7 +11,10 @@ class _VsWalletState extends State<VsWallet> {
 
     var size = MediaQuery.of(context).size;
     return Container(
-      color: Colors.red,
+      color: Colors.grey[200],
+      child: Center(
+        child: Text('کیف پول'),
+      ),
     );
   }
 }

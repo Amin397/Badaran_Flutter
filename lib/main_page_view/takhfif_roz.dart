@@ -12,7 +12,10 @@ class _DayDiscountState extends State<DayDiscount> {
     var size = MediaQuery.of(context).size;
 
     return Container(
-      color: Colors.yellow,
+      color: Colors.grey[200],
+      child: Center(
+        child: Text('تخفیف های روز'),
+      ),
     );
   }
 }
