@@ -1,11 +1,15 @@
+import 'package:baderan/functions.dart';
+import 'package:baderan/other/const.dart';
 import 'package:baderan/screens/login_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:load/load.dart';
 import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
 
 class SignInPage extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -25,6 +29,7 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen>
     with TickerProviderStateMixin {
   AnimationController _controller;
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   bool checked = false;
 
@@ -264,10 +269,28 @@ class _SignInScreenState extends State<SignInScreen>
                               padding: EdgeInsets.only(top: (size.height * .7) * .1),
                               child: RaisedButton(
                                 onPressed: (){
-                                  Navigator.pushReplacement(
-                                      context,
-                                      PageTransition(
-                                          type: PageTransitionType.upToDown, child: LoginPage()));
+                                  showLoadingDialog();
+                                  makePostRequest(
+                                      'http://demo.offerlee.ir/Customers/API/signin?token=test',
+                                      {
+                                        'nationalcode': national_code.text,
+                                        'phone': phone_Number.text,
+                                        'fname': 'یونس ',
+                                        'lname': 'نادری',
+                                        'logic': (checked)? 1 : 0
+                                      }).then((value) async {
+                                    if(value['status'] == 'success'){
+                                      hideLoadingDialog();
+                                      Navigator.pushReplacement(
+                                          context,
+                                          PageTransition(
+                                              type: PageTransitionType.upToDown, child: LoginPage()));
+                                    }else{
+                                      hideLoadingDialog();
+                                      print('amin');
+                                      print(phone_Number.text);
+                                    }
+                                  });
                                 },
                                 splashColor: Colors.white,
                                 color: Colors.blue.shade400,

@@ -264,72 +264,77 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   }
 
   Widget _userInformation(context, size) {
-    return Material(
-      elevation: 5.0,
-      color: Colors.white,
-      borderRadius: BorderRadius.all(Radius.circular(8.0)),
-      child: Container(
-        height: size.height * .12,
-        decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.all(Radius.circular(8.0))),
-        child: Row(
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.all(5.0),
-              width: size.width * .25,
-              decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.black26,
-                        spreadRadius: 1.2,
-                        blurRadius: 5.0)
-                  ],
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.white, width: 2.0),
-                  image: DecorationImage(
-                      fit: BoxFit.contain,
-                      image: Image.asset('assets/images/avatar.png').image)),
-            ),
-            Expanded(
-              flex: 1,
-              child: Container(
-                width: size.width * .75,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      'یونس نادری',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18.0,
-                          fontFamily: 'IRANSans'),
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Text(
-                          'کد عضویت: ',
-                          style: TextStyle(
-                              fontFamily: 'IRANSans',
-                              fontSize: 10.0,
-                              color: Colors.black38),
-                        ),
-                        Text(
-                          'ba45124845',
-                          style: TextStyle(
-                            fontSize: 16.0,
-                            fontFamily: 'IRANSans',
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
+    return InkWell(
+      onTap: (){
+
+      },
+      child: Material(
+        elevation: 5.0,
+        color: Colors.white,
+        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+        child: Container(
+          height: size.height * .12,
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.all(Radius.circular(8.0))),
+          child: Row(
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.all(5.0),
+                width: size.width * .25,
+                decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.black26,
+                          spreadRadius: 1.2,
+                          blurRadius: 5.0)
+                    ],
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.white, width: 2.0),
+                    image: DecorationImage(
+                        fit: BoxFit.contain,
+                        image: Image.asset('assets/images/avatar.png').image)),
               ),
-            )
-          ],
+              Expanded(
+                flex: 1,
+                child: Container(
+                  width: size.width * .75,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        'یونس نادری',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18.0,
+                            fontFamily: 'IRANSans'),
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Text(
+                            'کد عضویت: ',
+                            style: TextStyle(
+                                fontFamily: 'IRANSans',
+                                fontSize: 10.0,
+                                color: Colors.black38),
+                          ),
+                          Text(
+                            'ba45124845',
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              fontFamily: 'IRANSans',
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

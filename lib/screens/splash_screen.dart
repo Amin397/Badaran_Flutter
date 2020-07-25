@@ -1,8 +1,12 @@
 import 'dart:async';
+import 'package:baderan/other/const.dart';
+import 'package:baderan/screens/mainScreen.dart';
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
 
+import '../functions.dart';
 import 'login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -22,35 +26,35 @@ class _SplashScreenState extends State<SplashScreen>
     });
   }
 
-//  void navigationPage() async {
-//    print(await getPref('expert_id'));
-//    if (await getPref('expert_id') != null) {
-//      var connectivityResult = await (Connectivity().checkConnectivity());
-//      if (connectivityResult == ConnectivityResult.mobile ||
-//          connectivityResult == ConnectivityResult.wifi) {
-//        var data = await GetExpert(await getPref('expert_id'));
-//        var expertId =
-//        int.parse(data['data']['expert_id'] != null ? data['data']['expert_id'] : '0');
-//        print(await getPref('expert_id'));
-//        if (expertId > 0) {
-//          Navigator.pushReplacement(
-//              context,
-//              PageTransition(
-//                  type: PageTransitionType.upToDown, child: DashBoard()));
-//        } else {
-//          Navigator.of(context).pushReplacementNamed(SIGN_IN);
-//        }
-//      } else {
-//        Navigator.of(context).pushReplacementNamed(SIGN_IN);
-//      }
-//    } else {
-//      Navigator.of(context).pushReplacementNamed(SIGN_IN);
-//    }
-////    Navigator.pushReplacement(
-////        context,
-////        PageTransition(
-////            type: PageTransitionType.upToDown, child: SignInPage()));
-//  }
+  void navigationPage() async {
+    print(await getPref('expert_id'));
+    if (await getPref('expert_id') != null) {
+      var connectivityResult = await (Connectivity().checkConnectivity());
+      if (connectivityResult == ConnectivityResult.mobile ||
+          connectivityResult == ConnectivityResult.wifi) {
+        var data = await GetExpert(await getPref('expert_id'));
+        var expertId =
+        int.parse(data['data']['expert_id'] != null ? data['data']['expert_id'] : '0');
+        print(await getPref('expert_id'));
+        if (expertId > 0) {
+          Navigator.pushReplacement(
+              context,
+              PageTransition(
+                  type: PageTransitionType.upToDown, child: MyHomePage()));
+        } else {
+          Navigator.of(context).pushReplacementNamed(SIGN_IN);
+        }
+      } else {
+        Navigator.of(context).pushReplacementNamed(SIGN_IN);
+      }
+    } else {
+      Navigator.of(context).pushReplacementNamed(SIGN_IN);
+    }
+//    Navigator.pushReplacement(
+//        context,
+//        PageTransition(
+//            type: PageTransitionType.upToDown, child: SignInPage()));
+  }
 
   @override
   void initState() {

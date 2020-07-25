@@ -1,4 +1,6 @@
 import 'file:///I:/test_proj/baderan/lib/other/loading.dart';
+import 'package:baderan/screens/login_screen.dart';
+import 'package:baderan/screens/mainScreen.dart';
 import 'package:baderan/screens/sign_in_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -36,7 +38,8 @@ class HomePage extends StatelessWidget {
       routes: <String , WidgetBuilder>{
         SPLASH_SCREEN: (BuildContext context) => SplashScreen(),
         SIGN_IN: (BuildContext context) => SignInPage(),
-//        SIGN_UP:(BuildContext context) => SignUp()
+        LOGIN:(BuildContext context) => LoginPage(),
+        DASHBOARD:(BuildContext context) => MyHomePage()
       },
       initialRoute: SPLASH_SCREEN,
     );

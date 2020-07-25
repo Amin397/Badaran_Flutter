@@ -41,9 +41,10 @@ dependencies:
   pedantic: ^1.9.0
   barcode_scan: ^2.0.1
   url_launcher: ^5.4.2
+  shared_preferences: ^0.5.6+3
+  requests: ^3.1.0
+  connectivity: ^0.4.8+2
   qr_code_scanner:
-
-
 
 dev_dependencies:
   flutter_launcher_icons: "^0.7.5"

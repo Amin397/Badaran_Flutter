@@ -119,7 +119,6 @@ class _ZoomScaffoldState extends State<ZoomScaffold>
                 currentIndex = index;
                 print(currentIndex);
                 onTabTapped(index);
-
               });
             },
             enableShadow: true,

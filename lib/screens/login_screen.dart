@@ -1,6 +1,8 @@
+import 'package:baderan/functions.dart';
 import 'package:baderan/screens/sign_in_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:load/load.dart';
 import 'package:page_transition/page_transition.dart';
 import 'mainScreen.dart';
 
@@ -193,10 +195,24 @@ class _LoginScreenState extends State<LoginScreen> {
                               padding: EdgeInsets.only(top: (size.height * .7) * .1 , left: size.width * .1 , right:  size.width * .1 ),
                               child: RaisedButton(
                                 onPressed: (){
-                                  Navigator.pushReplacement(
-                                      context,
-                                      PageTransition(
-                                          type: PageTransitionType.upToDown, child: MyHomePage()));
+//                                  showLoadingDialog();
+//                                  makePostRequest(
+//                                      'http://demo.offerlee.ir/Customers/API/signin?token=test',
+//                                      {
+//                                        'username': username.text,
+//                                        'password': password.text,
+//                                      }).then((value) async {
+//                                    if(value['status'] == 'success'){
+//                                      hideLoadingDialog();
+                                      Navigator.pushReplacement(
+                                          context,
+                                          PageTransition(
+                                              type: PageTransitionType.upToDown, child: MyHomePage()));
+//                                    }else{
+//                                      hideLoadingDialog();
+//                                      print('amin');
+//                                    }
+//                                  });
                                 },
                                 splashColor: Colors.white,
                                 color: Colors.blue.shade400,
