@@ -1,4 +1,10 @@
+import 'dart:convert';
+
+import 'package:baderan/model/card_model.dart';
+import 'package:baderan/other/const.dart';
 import 'package:flutter/material.dart';
+import 'package:load/load.dart';
+import 'package:http/http.dart' as http;
 
 class CardManagement extends StatefulWidget {
   @override
@@ -6,12 +12,45 @@ class CardManagement extends StatefulWidget {
 }
 
 class _CardManagementState extends State<CardManagement> {
+  List<CardModel> cardList = List<CardModel>();
+  List listShow = List();
+
   List<Cards> cards = [
     Cards('assets/images/melat_bank_log.png', 'بانک ملت', '6273 8111 2054 0734',
         false),
     Cards('assets/images/melli_bank_logo.png', 'بانک ملی',
         '6273 8111 2054 0734', true),
   ];
+
+  Future<CardManagement> getList() async {
+    showLoadingDialog();
+    http.Response r = await http
+        .post(API_ROOT, body: {
+          'target': 'reqPart',
+      'typeOfCar_id': '4'});
+    if (r.statusCode == 200) {
+      Map<String, dynamic> b = jsonDecode(r.body);
+      List<CardModel> cardList2 = List<CardModel>();
+      for (var item in b['product']) {
+        cardList2.add(CardModel.fromJson(item));
+      }
+
+      setState(() {
+        cardList.addAll(cardList2);
+      });
+      select(0);
+      hideLoadingDialog();
+    }
+  }
+
+  void select(catId) {
+    setState(() {
+      listShow.clear();
+      for (CardModel i in cardList) {
+        listShow.add(i);
+      }
+    });
+  }
 
   @override
   void dispose() {
@@ -20,13 +59,15 @@ class _CardManagementState extends State<CardManagement> {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
+    Size size = MediaQuery.of(context).size;
 
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+
+          },
           backgroundColor: Color(0xff00a5b8),
           child: Center(
             child: Icon(

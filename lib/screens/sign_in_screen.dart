@@ -280,6 +280,8 @@ class _SignInScreenState extends State<SignInScreen>
                                         'logic': (checked)? 1 : 0
                                       }).then((value) async {
                                     if(value['status'] == 'success'){
+                                      setPref('fname', value['customer_fname']);
+                                      setPref('lname', value['customer_lname']);
                                       hideLoadingDialog();
                                       Navigator.pushReplacement(
                                           context,

@@ -197,12 +197,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                 onPressed: (){
 //                                  showLoadingDialog();
 //                                  makePostRequest(
-//                                      'http://demo.offerlee.ir/Customers/API/signin?token=test',
+//                                      'http://demo.offerlee.ir/Customers/API/login',
 //                                      {
 //                                        'username': username.text,
 //                                        'password': password.text,
+//                                        'token': 'test'
 //                                      }).then((value) async {
-//                                    if(value['status'] == 'success'){
+//                                    if(value['result'] == 'success'){
 //                                      hideLoadingDialog();
                                       Navigator.pushReplacement(
                                           context,

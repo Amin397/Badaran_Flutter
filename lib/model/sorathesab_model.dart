@@ -1,17 +1,16 @@
-import 'package:flutter/material.dart';
 
 class Transactions{
   String price;
   String date;
-  String factoreNum;
+  String billNum;
   String euroPrice;
 
-  Transactions({this.price, this.date, this.factoreNum, this.euroPrice});
+  Transactions({this.price, this.date, this.billNum, this.euroPrice});
 
   factory Transactions.fromJson(Map<String, dynamic> json) => Transactions(
-    price: json["Fp"],
-    date: json["Pn"],
-    factoreNum: json["Pb"],
-    euroPrice: json["Cb"],
+    price: json["price"],
+    date: json["date"],
+    billNum: json["BillNum"],
+    euroPrice: json["ePrice"],
   );
 }

@@ -1,5 +1,11 @@
+import 'dart:convert';
+
+import 'package:baderan/model/vs_wallet.dart';
+import 'package:baderan/other/const.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:load/load.dart';
+import 'package:http/http.dart' as http;
 
 class VsWallet extends StatefulWidget {
   @override
@@ -14,8 +20,12 @@ class Wallet {
 }
 
 class _VsWalletState extends State<VsWallet> {
+  List<WalletModel> walletList = List<WalletModel>();
+  List<WalletModel> walletList2 = List<WalletModel>();
+  List showList = List();
   @override
   Widget build(BuildContext context) {
+
     List<Wallet> wallet = [
       Wallet('بادران', '12.000.110'),
       Wallet('نگارینه', '9.000.110'),
@@ -23,6 +33,33 @@ class _VsWalletState extends State<VsWallet> {
       Wallet('رهیاب', '5.000.110'),
       Wallet('هایپرلی', '10.000.110'),
     ];
+
+    Future<WalletModel> getList() async {
+      showLoadingDialog();
+      http.Response r = await http
+          .post(API_ROOT, body: {'target': 'reqPart', 'typeOfCar_id': '4'});
+      if (r.statusCode == 200) {
+        Map<String, dynamic> b = jsonDecode(r.body);
+        List<WalletModel> listP2 = List<WalletModel>();
+        for (var item in b['product']) {
+          listP2.add(WalletModel.fromJson(item));
+        }
+
+        setState(() {
+          walletList.addAll(walletList2);
+        });
+        hideLoadingDialog();
+      }
+    }
+
+    void select(catId) {
+      setState(() {
+        showList.clear();
+        for (WalletModel i in walletList) {
+          showList.add(i);
+        }
+      });
+    }
 
     var size = MediaQuery.of(context).size;
 
